@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import Particles from './Background/Particles';
+import Particles from '../common/Background/Particles';
 import { FaCode, FaUsers, FaRocket, FaGithub, FaDiscord } from 'react-icons/fa';
 
 interface LandingPageProps {

@@ -15,13 +15,13 @@ const MessageInput = ({ sendMessage }: MessageInputProps) => {
   };
 
   return (
-    <div className="mt-4 bg-gray-700/50 p-4 rounded-lg border border-gray-600">
+    <div className="p-4 bg-[#1E293B]/30 border-t border-[#3B82F6]/10">
       <div className="flex items-center gap-3">
         <input
           type="text"
-          className="flex-1 bg-gray-800 text-white px-4 py-3 rounded-lg
-                     border border-gray-600 focus:border-blue-500 focus:ring-1 
-                     focus:ring-blue-500 outline-none transition-all
+          className="flex-1 bg-[#1E293B]/50 text-white px-4 py-3 rounded-lg
+                     border border-[#3B82F6]/20 focus:border-[#3B82F6] focus:ring-1 
+                     focus:ring-[#3B82F6] outline-none transition-all
                      placeholder-gray-400 text-sm"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
@@ -31,8 +31,8 @@ const MessageInput = ({ sendMessage }: MessageInputProps) => {
         <button
           onClick={handleSend}
           disabled={!message.trim()}
-          className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium
-                     hover:bg-blue-700 active:bg-blue-800 transition-colors
+          className="bg-[#3B82F6] text-white px-6 py-3 rounded-lg font-medium
+                     hover:bg-[#2563EB] active:bg-[#1D4ED8] transition-colors
                      disabled:opacity-50 disabled:cursor-not-allowed
                      text-sm flex items-center gap-2"
         >

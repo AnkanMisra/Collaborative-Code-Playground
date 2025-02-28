@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { io, Socket } from "socket.io-client";
 import { Routes, Route } from "react-router-dom";
-import LandingPage from "./components/LandingPage";
-import Editor from "./components/Editor";
+import LandingPage from "./components/landing/LandingPage";
+import Editor from "./components/editor/Editor";
+import NotFound from './components/NotFound';
 
 const socket = io("http://localhost:3000", {
   transports: ['websocket'],
@@ -37,6 +38,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage connected={connected} />} />
         <Route path="/editor" element={<Editor socket={socket} connected={connected} />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
