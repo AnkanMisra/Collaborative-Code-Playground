@@ -2,39 +2,37 @@ import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import CodeEditor from "./CodeEditor";
 import ChatArea from "./ChatArea";
+import { useNavigate } from "react-router-dom";
 
 const socket = io("http://localhost:3000", {
   transports: ['websocket'],
   reconnection: true
 });
 
-const Editor = () => {
+import { Socket } from 'socket.io-client';
+
+interface EditorProps {
+  socket: Socket;
+  connected: boolean;
+}
+
+const Editor = ({ socket, connected }: EditorProps) => {
+  const navigate = useNavigate();
   const [chat, setChat] = useState<string[]>([]);
   const [code, setCode] = useState("// Start coding here...");
-  const [connected, setConnected] = useState(false);
 
   useEffect(() => {
-    socket.on("connect", () => {
-      console.log("Connected to server!", socket.id);
-      setConnected(true);
-    });
-
-    socket.on("disconnect", () => {
-      console.log("Disconnected from server!");
-      setConnected(false);
-    });
-
-    socket.on("message", (data: string) => {
+    const handleMessage = (data: string) => {
       console.log("Received message:", data);
       setChat(prevChat => [...prevChat, data]);
-    });
+    };
+
+    socket.on("message", handleMessage);
 
     return () => {
-      socket.off("connect");
-      socket.off("disconnect");
-      socket.off("message");
+      socket.off("message", handleMessage);
     };
-  }, []);
+  }, [socket]);
 
   const sendMessage = (message: string) => {
     if (message.trim() && connected) {
@@ -51,7 +49,7 @@ const Editor = () => {
             CodePlay Editor {!connected && <span className="text-red-500">(Disconnected)</span>}
           </h1>
           <button
-            onClick={() => window.history.back()}
+            onClick={() => navigate('/')}
             className="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors"
           >
             Back to Home
