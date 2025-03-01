@@ -3,6 +3,7 @@
 # Collaborative Code Playground ( Apertre 2.0! 👋)
 
 A real-time collaborative code editing platform where developers can code together, share knowledge, and learn from each other. 
+
 This is a personal side project of Team ByteBlaster and now is part of Apertre 2.0, an open-source event.
 
 ## Project Overview
