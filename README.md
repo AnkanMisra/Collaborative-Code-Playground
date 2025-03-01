@@ -24,6 +24,11 @@ The Collaborative Code Playground consists of two main components:
 - Socket.io
 - MongoDB (for data persistence)
 
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
+- MongoDB (local or cloud instance)
+
 ## How Can you Help?
 - **Feature Requests**: Share your ideas through GitHub issues.
 - **Bug Fixes & Improvements**: Pick an existing issue or report one.
@@ -32,12 +37,6 @@ The Collaborative Code Playground consists of two main components:
 - **Community Engagement**: Spread the word and help others discover the platform
 
 ### By contributing, you’ll not only gain experience with real-world collaborative development but also leave a lasting impact on an evolving open-source project
-  
-  
-### Prerequisites
-- Node.js (v14 or higher)
-- npm or yarn
-- MongoDB (local or cloud instance)
 
 ## Running the Project Locally
 
