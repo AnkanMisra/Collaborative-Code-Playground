@@ -1,6 +1,6 @@
 
 
-# Collaborative Code Playground ( Apertre 2.0! 👋)
+# Collaborative Code Playground 
 
 A real-time collaborative code editing platform where developers can code together, share knowledge, and learn from each other. 
 
