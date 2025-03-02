@@ -9,11 +9,15 @@ const io = new Server(3000, {
   }
 });
 
-let connectedClients = 0;
+// Track unique clients by their ID
+const connectedClients = new Set();
 
 io.on("connection", (socket) => {
-  connectedClients++;
-  console.log(`Client connected. Total clients: ${connectedClients}`);
+  // Only increment if this is a new client
+  if (!connectedClients.has(socket.id)) {
+    connectedClients.add(socket.id);
+    console.log(`Client connected. Total clients: ${connectedClients.size}`);
+  }
 
   socket.on("message", (data) => {
     console.log(`Message received: ${data}`);
@@ -21,9 +25,19 @@ io.on("connection", (socket) => {
     io.emit("message", data);
   });
 
+  // Handle language change events
+  socket.on("language-change", (language) => {
+    console.log(`Language changed to: ${language}`);
+    // Broadcast to everyone except sender
+    socket.broadcast.emit("language-change", language);
+  });
+
   socket.on("disconnect", () => {
-    connectedClients--;
-    console.log(`Client disconnected. Total clients: ${connectedClients}`);
+    // Only decrement if this client was tracked
+    if (connectedClients.has(socket.id)) {
+      connectedClients.delete(socket.id);
+      console.log(`Client disconnected. Total clients: ${connectedClients.size}`);
+    }
   });
 });
 
