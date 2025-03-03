@@ -13,7 +13,6 @@ const io = new Server(3000, {
 const connectedClients = new Set();
 
 io.on("connection", (socket) => {
-  // Only increment if this is a new client
   if (!connectedClients.has(socket.id)) {
     connectedClients.add(socket.id);
     console.log(`Client connected. Total clients: ${connectedClients.size}`);
