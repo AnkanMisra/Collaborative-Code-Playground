@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import Particles from '../common/Background/Particles';
 import { FaCode, FaUsers, FaRocket, FaGithub, FaDiscord } from 'react-icons/fa';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { useRef, useEffect, useState } from 'react';
+import { motion, useScroll, useTransform} from 'framer-motion';
+import { useRef, useEffect } from 'react';
 import Navbar from '../common/Navbar';
 
-// Custom animation variants
+
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
   visible: { 
@@ -48,25 +48,20 @@ interface LandingPageProps {
 const LandingPage = ({ connected }: LandingPageProps) => {
   const navigate = useNavigate();
   const { scrollY } = useScroll();
-  const [isHovering, setIsHovering] = useState(false);
 
-  // References for scroll sections
   const featuresRef = useRef<HTMLDivElement>(null);
   const faqRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
 
-  // Enhanced parallax effects
   const titleOpacity = useTransform(scrollY, [0, 300], [1, 0.2]);
   const titleY = useTransform(scrollY, [0, 300], [0, -50]);
   const titleScale = useTransform(scrollY, [0, 300], [1, 0.95]);
   const backgroundParallax = useTransform(scrollY, [0, 1000], [0, 100]);
 
-  // Smooth scroll function
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Implement smooth scrolling behavior
   useEffect(() => {
     const handleLinkClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -86,7 +81,6 @@ const LandingPage = ({ connected }: LandingPageProps) => {
 
   return (
     <div className="relative w-full overflow-x-hidden bg-[#0A0F1E] font-['Roboto_Condensed']">
-      {/* Enhanced Particle Background */}
       <motion.div 
         className="fixed inset-0 w-full h-full"
         style={{ y: backgroundParallax }}
@@ -103,25 +97,23 @@ const LandingPage = ({ connected }: LandingPageProps) => {
         />
       </motion.div>
 
-      {/* Use the new Navbar component */}
       <Navbar 
         connected={connected} 
-        onScrollToSection={scrollToSection}
-        featuresRef={featuresRef}
-        faqRef={faqRef}
-        ctaRef={ctaRef}
+        onScrollToSection={(ref: React.RefObject<HTMLDivElement>) => scrollToSection(ref)}
+        featuresRef={featuresRef as React.RefObject<HTMLDivElement>}
+        faqRef={faqRef as React.RefObject<HTMLDivElement>}
+        ctaRef={ctaRef as React.RefObject<HTMLDivElement>}
         isLandingPage={true}
       />
 
-      {/* Hero Section with enhanced animations */}
       <section className="relative min-h-screen flex items-center justify-center pt-20">
-        {/* Rest of the component remains the same */}
+
         <div className="container mx-auto px-6 py-16 relative z-10">
           <motion.div
             style={{ opacity: titleOpacity, y: titleY, scale: titleScale }}
             className="text-center mb-16 max-w-4xl mx-auto"
           >
-            {/* Version Badge with pulse animation */}
+
             <motion.div
               className="inline-block mb-6 px-4 py-1 bg-[#1E293B]/50 rounded-full text-sm font-bold tracking-wider border border-[#3B82F6]/20 backdrop-blur-sm"
               initial={{ opacity: 0, y: 20, scale: 0.8 }}
@@ -139,7 +131,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
               </span>
             </motion.div>
 
-            {/* Title with gradient animation */}
+
             <motion.h1
               className="text-5xl md:text-7xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#38BDF8] bg-size-200"
               initial={{ opacity: 0, y: 20 }}
@@ -153,7 +145,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
               Collaborative Code Playground
             </motion.h1>
 
-            {/* Subtitle with glass effect */}
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -171,7 +163,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
             </motion.div>
           </motion.div>
 
-          {/* Social Links with staggered animation */}
+
           <motion.div
             className="flex justify-center gap-4 mb-16"
             variants={staggerContainer}
@@ -208,7 +200,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
         </div>
       </section>
 
-      {/* Feature Cards Section */}
+
       <section ref={featuresRef} id="features" className="py-24 relative z-10">
         <div className="container mx-auto px-6">
           <motion.div
@@ -231,7 +223,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            {/* Feature Card 1 */}
+
             <motion.div
               variants={fadeInUp}
               whileHover={{ 
@@ -255,7 +247,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
               <p className="text-gray-300">Collaborate on code with instant updates and live feedback from your team</p>
             </motion.div>
 
-            {/* Feature Card 2 */}
+
             <motion.div
               variants={fadeInUp}
               whileHover={{ 
@@ -279,7 +271,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
               <p className="text-gray-300">Work seamlessly with your team members in a shared environment</p>
             </motion.div>
 
-            {/* Feature Card 3 */}
+
             <motion.div
               variants={fadeInUp}
               whileHover={{ 
@@ -306,7 +298,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
         </div>
       </section>
 
-      {/* FAQ Section */}
+
       <section ref={faqRef} id="faq" className="py-24 relative z-10 bg-[#0F172A]/50">
         <div className="container mx-auto px-6">
           <motion.div 
@@ -366,7 +358,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
         </div>
       </section>
 
-      {/* Call to Action Section */}
+
       <section ref={ctaRef} id="cta" className="py-24 relative z-10">
         <div className="container mx-auto px-6">
           <motion.div 
@@ -431,7 +423,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
         </div>
       </section>
 
-      {/* Footer */}
+
       <footer className="py-12 relative z-10 border-t border-[#3B82F6]/10">
         <div className="container mx-auto px-6">
           <motion.div 

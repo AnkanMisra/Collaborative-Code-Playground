@@ -4,21 +4,14 @@ import { useNavigate } from 'react-router-dom';
 
 interface NavbarProps {
   connected: boolean;
-  onScrollToSection?: (ref: React.RefObject<HTMLDivElement>) => void;
-  featuresRef?: React.RefObject<HTMLDivElement>;
-  faqRef?: React.RefObject<HTMLDivElement>;
-  ctaRef?: React.RefObject<HTMLDivElement>;
-  isLandingPage?: boolean;
+  onScrollToSection: (ref: React.RefObject<HTMLDivElement>) => void;
+  featuresRef: React.RefObject<HTMLDivElement>;
+  faqRef: React.RefObject<HTMLDivElement>;
+  ctaRef: React.RefObject<HTMLDivElement>;
+  isLandingPage: boolean;
 }
 
-const Navbar = ({ 
-  connected, 
-  onScrollToSection, 
-  featuresRef, 
-  faqRef, 
-  ctaRef,
-  isLandingPage = false
-}: NavbarProps) => {
+const Navbar = ({ connected, onScrollToSection, featuresRef, faqRef, ctaRef, isLandingPage }: NavbarProps) => {
   const navigate = useNavigate();
 
   const handleStartCoding = () => {
