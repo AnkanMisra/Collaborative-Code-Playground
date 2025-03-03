@@ -4,7 +4,7 @@ import { FaCode, FaUsers, FaRocket, FaGithub, FaDiscord } from 'react-icons/fa';
 import { motion, useScroll, useTransform} from 'framer-motion';
 import { useRef, useEffect } from 'react';
 import Navbar from '../common/Navbar';
-
+import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -391,34 +391,45 @@ const LandingPage = ({ connected }: LandingPageProps) => {
             >
               Join thousands of developers who are already using our platform to collaborate, learn, and build amazing projects.
             </motion.p>
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              whileHover={{ 
-                scale: 1.05, 
-                boxShadow: "0 0 30px rgba(59, 130, 246, 0.6)",
-                transition: { duration: 0.2 }
-              }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => navigate('/editor')}
-              disabled={!connected}
-              className={`px-8 py-4 bg-[#3B82F6] text-white rounded-md font-medium text-lg
-                        ${!connected ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#2563EB] transition-colors'}`}
-            >
-              {connected ? 
-                <motion.span
-                  initial={{ opacity: 1 }}
-                  whileHover={{
-                    opacity: [1, 0.8, 1],
-                    transition: { duration: 1.5, repeat: Infinity }
+            <SignedOut>
+              <SignInButton mode="modal">
+                <motion.button
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  whileHover={{ 
+                    scale: 1.05, 
+                    boxShadow: "0 0 30px rgba(59, 130, 246, 0.6)",
+                    transition: { duration: 0.2 }
                   }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-[#3B82F6] text-white rounded-md font-medium text-lg hover:bg-[#2563EB] transition-colors"
                 >
-                  Start Coding Now
-                </motion.span> 
-                : "Connecting..."}
-            </motion.button>
+                  Start Coding
+                </motion.button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  boxShadow: "0 0 30px rgba(59, 130, 246, 0.6)",
+                  transition: { duration: 0.2 }
+                }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => navigate('/editor')}
+                disabled={!connected}
+                className={`px-8 py-4 bg-[#3B82F6] text-white rounded-md font-medium text-lg
+                          ${!connected ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#2563EB] transition-colors'}`}
+              >
+                {connected ? 'Start Coding Now' : 'Connecting...'}
+              </motion.button>
+            </SignedIn>
           </motion.div>
         </div>
       </section>
