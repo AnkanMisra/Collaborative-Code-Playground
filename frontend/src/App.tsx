@@ -8,6 +8,8 @@ import NotFound from './components/NotFound';
 import Profile from './components/profile/Profile';
 import { SocketProvider } from './contexts/SocketContext';
 import SignIn from './components/auth/SignIn';
+import SignUp from './components/auth/SignUp';
+import Unauthorized from './components/auth/Unauthorized';
 
 const socket = io("http://localhost:3000", {
   transports: ['websocket'],
@@ -49,7 +51,7 @@ function App() {
                 <Editor socket={socket} connected={connected} />
               </SignedIn>
             ) : (
-              <Navigate to="/sign-in" replace />
+              <Navigate to="/unauthorized" replace />
             )
           } />
           <Route path="/profile" element={
@@ -58,7 +60,7 @@ function App() {
                 <Profile />
               </SignedIn>
             ) : (
-              <Navigate to="/sign-in" replace />
+              <Navigate to="/unauthorized" replace />
             )
           } />
           <Route path="/sign-in" element={
@@ -68,6 +70,14 @@ function App() {
               <SignIn />
             )
           } />
+          <Route path="/sign-up" element={
+            isSignedIn ? (
+              <Navigate to="/profile" replace />
+            ) : (
+              <SignUp />
+            )
+          } />
+          <Route path="/unauthorized" element={<Unauthorized />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
