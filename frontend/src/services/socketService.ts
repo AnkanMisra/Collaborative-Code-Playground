@@ -1,19 +1,19 @@
 import { io, Socket } from "socket.io-client";
 
-// Create a singleton socket instance
+
 const socket: Socket = io("http://localhost:3000", {
   transports: ['websocket'],
   reconnection: true
 });
 
-// Socket event types
+
 export type SocketEventHandler = (data: any) => void;
 
-// Socket service
+
 const socketService = {
   socket,
   
-  // Connection methods
+
   onConnect: (callback: () => void) => {
     socket.on("connect", callback);
     return () => socket.off("connect", callback);
@@ -24,7 +24,7 @@ const socketService = {
     return () => socket.off("disconnect", callback);
   },
   
-  // Message methods
+
   sendMessage: (message: string) => {
     socket.emit("message", message);
   },
@@ -34,7 +34,7 @@ const socketService = {
     return () => socket.off("message", callback);
   },
   
-  // Language change methods
+
   changeLanguage: (language: string) => {
     socket.emit("language-change", language);
   },
@@ -44,7 +44,6 @@ const socketService = {
     return () => socket.off("language-change", callback);
   },
   
-  // Cleanup method
   cleanup: (eventName: string, callback: SocketEventHandler) => {
     socket.off(eventName, callback);
   }

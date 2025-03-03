@@ -10,32 +10,32 @@ const EditorBackground: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas dimensions
+
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
 
-    // Initialize
+
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Grid parameters
+
     const gridSize = 30;
     const gridOpacity = 0.07;
     
-    // Animation variables
+
     let animationFrameId: number;
     let time = 0;
 
-    // Draw the animated grid
+
     const render = () => {
       time += 0.2;
       
-      // Clear canvas
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Create gradient background
+
       const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
       gradient.addColorStop(0, '#0A0F1E');
       gradient.addColorStop(1, '#111827');
@@ -43,37 +43,37 @@ const EditorBackground: React.FC = () => {
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      // Draw grid
+
       ctx.strokeStyle = '#3B82F6';
       ctx.lineWidth = 0.3;
       
-      // Vertical lines
+
       for (let x = 0; x < canvas.width; x += gridSize) {
         ctx.beginPath();
         ctx.moveTo(x, 0);
         ctx.lineTo(x, canvas.height);
         
-        // Vary opacity based on position and time
+
         const opacity = gridOpacity * (0.5 + 0.5 * Math.sin(x * 0.01 + time * 0.05));
         ctx.globalAlpha = opacity;
         
         ctx.stroke();
       }
       
-      // Horizontal lines
+
       for (let y = 0; y < canvas.height; y += gridSize) {
         ctx.beginPath();
         ctx.moveTo(0, y);
         ctx.lineTo(canvas.width, y);
         
-        // Vary opacity based on position and time
+
         const opacity = gridOpacity * (0.5 + 0.5 * Math.sin(y * 0.01 + time * 0.05));
         ctx.globalAlpha = opacity;
         
         ctx.stroke();
       }
       
-      // Add subtle glow points at intersections
+
       for (let x = 0; x < canvas.width; x += gridSize * 3) {
         for (let y = 0; y < canvas.height; y += gridSize * 3) {
           const pulseSize = 2 + Math.sin(time * 0.1 + x * 0.01 + y * 0.01) * 1;

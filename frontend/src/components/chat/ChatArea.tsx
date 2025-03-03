@@ -9,7 +9,7 @@ interface ChatAreaProps {
 const ChatArea = ({ messages, onSendMessage }: ChatAreaProps) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll to bottom when new messages arrive
+  
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);

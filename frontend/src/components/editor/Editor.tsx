@@ -45,13 +45,11 @@ const Editor = ({ socket, connected }: EditorProps) => {
 
   const handleLanguageChange = (newLanguage: string) => {
     setLanguage(newLanguage);
-    // Emit language change to other users
     if (connected) {
       socket.emit("language-change", newLanguage);
     }
   };
 
-  // Listen for language changes from other users
   useEffect(() => {
     const handleLanguageChange = (newLanguage: string) => {
       setLanguage(newLanguage);
@@ -64,7 +62,7 @@ const Editor = ({ socket, connected }: EditorProps) => {
     };
   }, [socket]);
 
-  // Format code function
+
   const formatCode = () => {
     console.log("Formatting code...");
     const formattedCode = code
@@ -77,12 +75,12 @@ const Editor = ({ socket, connected }: EditorProps) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0A0F1E] to-[#111827] overflow-hidden">
-      {/* Animated Background */}
+
       <EditorBackground />
       
-      {/* Glass Overlay */}
+
       <div className="relative z-10">
-        {/* Top Bar - Enhanced */}
+
         <div className="w-full backdrop-blur-md bg-[#1E293B]/20 border-b border-[#3B82F6]/20 py-3 px-6 shadow-lg">
           <div className="flex items-center justify-between max-w-7xl mx-auto">
             <div className="flex items-center gap-3">
@@ -118,10 +116,10 @@ const Editor = ({ socket, connected }: EditorProps) => {
           </div>
         </div>
 
-        {/* Main Content - Enhanced */}
+
         <div className="max-w-7xl mx-auto p-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Code Editor Panel - Enhanced */}
+
             <div className="lg:col-span-2 bg-[#1E293B]/30 rounded-xl border border-[#3B82F6]/10 overflow-hidden backdrop-blur-md shadow-xl">
               <div className="px-4 py-2.5 bg-[#1E293B]/70 border-b border-[#3B82F6]/10 flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -152,8 +150,6 @@ const Editor = ({ socket, connected }: EditorProps) => {
               </div>
               <CodeEditor code={code} language={language} onChange={setCode} />
             </div>
-
-            {/* Chat Panel - Enhanced */}
             <div className="bg-[#1E293B]/30 rounded-xl border border-[#3B82F6]/10 overflow-hidden backdrop-blur-md shadow-xl">
               <div className="px-4 py-2.5 bg-[#1E293B]/70 border-b border-[#3B82F6]/10 flex items-center gap-2">
                 <svg className="w-4 h-4 text-[#3B82F6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">

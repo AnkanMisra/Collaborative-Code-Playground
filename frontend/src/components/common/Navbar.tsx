@@ -52,8 +52,6 @@ const Navbar = ({
             </motion.div>
             <span className="text-white text-xl font-bold">CodePlay</span>
           </motion.div>
-
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {isLandingPage && onScrollToSection && (
               <>
@@ -118,8 +116,6 @@ const Navbar = ({
               {connected ? "Start Coding" : "Connecting..."}
             </motion.button>
           </div>
-
-          {/* Mobile Navigation */}
           <div className="md:hidden">
             <motion.button
               whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(59, 130, 246, 0.5)" }}
