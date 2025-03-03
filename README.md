@@ -1,6 +1,6 @@
 
 
-# Collaborative Code Playground 🖥️
+# Collaborative Code Playground (CodePlay) 🖥️
 
 A real-time collaborative code editing platform where developers can code together with sharing knowledge, and learn from each other. 
 
