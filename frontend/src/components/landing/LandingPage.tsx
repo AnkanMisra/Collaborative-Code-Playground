@@ -115,19 +115,19 @@ const LandingPage = ({ connected }: LandingPageProps) => {
           >
 
             <motion.div
-              className="inline-block mb-6 px-4 py-1 bg-[#1E293B]/50 rounded-full text-sm font-bold tracking-wider border border-[#3B82F6]/20 backdrop-blur-sm"
+              className="inline-block mb-6 px-4 py-1.5 bg-[#1E293B]/80 rounded-full text-sm font-bold tracking-wider border border-[#3B82F6]/40 backdrop-blur-sm shadow-lg"
               initial={{ opacity: 0, y: 20, scale: 0.8 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               whileHover={{ 
                 scale: 1.05, 
-                boxShadow: "0 0 15px rgba(59, 130, 246, 0.3)",
+                boxShadow: "0 0 20px rgba(59, 130, 246, 0.4)",
                 transition: { duration: 0.2 }
               }}
             >
-              <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                Alpha Release v0.1.0
+              <span className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(74,222,128,0.5)]"></span>
+                <span className="text-white/90">Alpha Release v0.1.0</span>
               </span>
             </motion.div>
 
@@ -453,7 +453,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
 
             <div className="flex flex-wrap justify-center gap-8 mb-6 md:mb-0">
               <motion.button 
-                onClick={() => scrollToSection(featuresRef)} 
+                onClick={() => scrollToSection(featuresRef as React.RefObject<HTMLDivElement>)}
                 className="text-white/60 hover:text-white transition-colors"
                 whileHover={{ scale: 1.1, color: "#ffffff" }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -461,7 +461,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
                 Features
               </motion.button>
               <motion.button 
-                onClick={() => scrollToSection(faqRef)} 
+                onClick={() => scrollToSection(faqRef as React.RefObject<HTMLDivElement>)}
                 className="text-white/60 hover:text-white transition-colors"
                 whileHover={{ scale: 1.1, color: "#ffffff" }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -469,7 +469,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
                 FAQ
               </motion.button>
               <motion.button 
-                onClick={() => scrollToSection(ctaRef)} 
+                onClick={() => scrollToSection(ctaRef as React.RefObject<HTMLDivElement>)} 
                 className="text-white/60 hover:text-white transition-colors"
                 whileHover={{ scale: 1.1, color: "#ffffff" }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
