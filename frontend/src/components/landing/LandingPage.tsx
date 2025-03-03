@@ -170,6 +170,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
             initial="hidden"
             animate="visible"
           >
+            {/* GitHub and Discord buttons remain the same */}
             <motion.button
               variants={fadeInUp}
               whileHover={{ 
@@ -196,6 +197,23 @@ const LandingPage = ({ connected }: LandingPageProps) => {
             >
               <FaDiscord className="text-xl" /> Discord
             </motion.button>
+            
+            {/* Profile button for signed-in users has been removed */}
+          </motion.div>
+          
+          {/* Add connection status indicator */}
+          <motion.div 
+            className="flex justify-center mb-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+          >
+            <div className={`flex items-center gap-2 px-4 py-2 rounded-full ${connected ? 'bg-green-500/20' : 'bg-red-500/20'} backdrop-blur-sm`}>
+              <span className={`w-2 h-2 rounded-full ${connected ? 'bg-green-400 animate-pulse' : 'bg-red-400'}`}></span>
+              <span className="text-sm text-white/80">
+                {connected ? 'Server Connected' : 'Connecting to server...'}
+              </span>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -406,11 +424,12 @@ const LandingPage = ({ connected }: LandingPageProps) => {
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-4 bg-[#3B82F6] text-white rounded-md font-medium text-lg hover:bg-[#2563EB] transition-colors"
                 >
-                  Start Coding
+                  Sign In to Start
                 </motion.button>
               </SignInButton>
             </SignedOut>
             <SignedIn>
+              {/* Removed the flex container with two buttons and kept only the Start Coding button */}
               <motion.button
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
