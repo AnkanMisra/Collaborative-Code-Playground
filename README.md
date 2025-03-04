@@ -40,9 +40,9 @@ The Collaborative Code Playground consists of two main components:
 ## Contribution
 - **1**. Fork the Project
 - **2**. Create a new branch ```git branch <branch_name>``` 
-- **3**. Go to you're new branch ```git checkout <branch-name>```
-- **4**. Commit you're changes ```git commit -m "you're approprite message"``` 
-- **5**. Push those changes to you're branch ```git push origin <branch-name>```
+- **3**. Switch to your new branch ```git checkout <branch-name>``` or ```git checkout -b <branch-name>```
+- **4**. Commit your changes ```git commit -m "your approprite message"``` 
+- **5**. Push those changes to your branch ```git push origin <branch-name>```
 - **6**. Open a Pull Request
   
 ### By contributing, you’ll not only gain experience with real-world collaborative development but also leave a lasting impact on an evolving open-source project
