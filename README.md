@@ -30,13 +30,21 @@ The Collaborative Code Playground consists of two main components:
 - npm or yarn
 - MongoDB (local or cloud instance)
 
-## How Can you Help?
+# How Can you Help?
 - **Feature Requests**: Share your ideas through GitHub issues.
 - **Bug Fixes & Improvements**: Pick an existing issue or report one.
 - **UI/UX Enhancements**: Help refine the user interface for a smoother experience.
 - **Docs & Tutorials**: Improve our documentation or create tutorials for new users.
 - **Community Engagement**: Spread the word and help others discover the platform
 
+## Contribution
+- **1**. Fork the Project
+- **2**. Create a new branch ```git branch <branch_name>``` 
+- **3**. Go to you're new branch ```git checkout <branch-name>```
+- **4**. Commit you're changes ```git commit -m "you're approprite message"``` 
+- **5**. Push those changes to you're branch ```git push origin <branch-name>```
+- **6**. Open a Pull Request
+  
 ### By contributing, you’ll not only gain experience with real-world collaborative development but also leave a lasting impact on an evolving open-source project
 
 ## Running the Project Locally
