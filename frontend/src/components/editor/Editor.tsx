@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { io } from "socket.io-client";
-import CodeEditor from "./CodeEditor";
-import ChatArea from "../chat/ChatArea";
 import { useNavigate } from "react-router-dom";
-import LanguageSelector from "./LanguageSelector";
-import { Socket } from 'socket.io-client';
+import { io, Socket } from "socket.io-client";
+import ChatArea from "../chat/ChatArea";
 import EditorBackground from "../common/Background/EditorBackground";
+import CodeEditor from "./CodeEditor";
+import LanguageSelector from "./LanguageSelector";
 
 const socket = io("http://localhost:3000", {
   transports: ['websocket'],
@@ -69,7 +68,7 @@ const Editor = ({ socket, connected }: EditorProps) => {
       .split('\n')
       .map(line => line.trim())
       .join('\n');
-    
+
     setCode(formattedCode);
   };
 
@@ -77,7 +76,7 @@ const Editor = ({ socket, connected }: EditorProps) => {
     <div className="min-h-screen bg-gradient-to-b from-[#0A0F1E] to-[#111827] overflow-hidden">
 
       <EditorBackground />
-      
+
 
       <div className="relative z-10">
 
@@ -104,7 +103,7 @@ const Editor = ({ socket, connected }: EditorProps) => {
             </div>
             <button
               onClick={() => navigate('/')}
-              className="flex items-center gap-2 px-4 py-2 bg-[#1E293B]/50 text-white/90 rounded-lg 
+              className="flex items-center gap-2 px-4 py-2 bg-[#1E293B]/50 text-white/90 rounded-lg
                        hover:bg-[#1E293B]/80 transition-all duration-200 text-sm font-medium border border-[#3B82F6]/10
                        shadow-sm hover:shadow-md"
             >
@@ -128,16 +127,16 @@ const Editor = ({ socket, connected }: EditorProps) => {
                   </svg>
                   <span className="text-white/90 text-sm font-medium">Code Editor</span>
                 </div>
-                
+
                 <div className="flex items-center gap-3">
-                  <LanguageSelector 
-                    currentLanguage={language} 
-                    onLanguageChange={handleLanguageChange} 
+                  <LanguageSelector
+                    currentLanguage={language}
+                    onLanguageChange={handleLanguageChange}
                   />
-                  
-                  <button 
+
+                  <button
                     onClick={formatCode}
-                    className="flex items-center gap-1 px-3 py-1.5 bg-[#3B82F6]/20 text-white/90 rounded-md 
+                    className="flex items-center gap-1 px-3 py-1.5 bg-[#3B82F6]/20 text-white/90 rounded-md
                              hover:bg-[#3B82F6]/30 transition-all duration-200 text-sm font-medium border border-[#3B82F6]/20"
                   >
                     <svg className="w-4 h-4 text-[#3B82F6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
