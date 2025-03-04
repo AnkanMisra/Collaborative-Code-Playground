@@ -47,6 +47,44 @@ The Collaborative Code Playground consists of two main components:
   
 ### By contributing, you’ll not only gain experience with real-world collaborative development but also leave a lasting impact on an evolving open-source project
 
+## After Pulling a Pull Request
+
+Once you’ve opened a Pull Request (PR) and it’s merged or reviewed, follow these steps to keep your repository updated and maintain good contribution practices.
+
+### 🚀 After Opening a Pull Request:
+1. **Add a Descriptive Comment:**  
+   - Summarize the changes you made (if not covered in the commit message).  
+   - Mention any linked issues using keywords (e.g., `Closes #123`).  
+
+2. **Respond to Feedback:**  
+   - Check for comments or requested changes from reviewers.  
+   - Make changes locally, commit, and push to the same branch — the PR will update automatically.  
+
+3. **Celebrate if Merged!** 🎉  
+   - Thank the maintainers for reviewing and merging your contribution.
+
+---
+
+### 🛠 After Pulling Changes (if PR is merged):
+1. **Update Your Local Repository:**  
+   - Switch to the main branch:  
+     ```bash
+     git checkout main
+     ```  
+   - Pull the latest changes:  
+     ```bash
+     git pull origin main
+     ```  
+   - Delete your branch (if no longer needed):  
+     ```bash
+     git branch -d <branch_name>
+     ```  
+
+2. **Start a New Task (Optional):**  
+   - Pick another issue or feature to work on.  
+   - Repeat the cycle: create a branch, make your changes, and contribute again!
+
+By following these steps, you ensure your fork stays in sync with the original repository, making future contributions even smoother. 🚀
 ## Running the Project Locally
 
 1. Clone the repository
