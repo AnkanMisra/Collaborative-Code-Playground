@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { SignInButton } from '@clerk/clerk-react';
+import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const Unauthorized = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const Unauthorized = () => {
         <div className="mb-8">
           <motion.div
             className="inline-block bg-gradient-to-br from-[#EF4444] to-[#F87171] p-3 rounded-md mb-4"
-            animate={{ 
+            animate={{
               rotate: [0, -5, 5, -5, 0],
               transition: { duration: 1, repeat: Infinity, repeatDelay: 2 }
             }}
@@ -27,7 +27,7 @@ const Unauthorized = () => {
           </motion.div>
           <h1 className="text-3xl font-bold text-white mb-2">Access Denied</h1>
           <p className="text-gray-400 mb-6">You need to sign in to access this page</p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <SignInButton mode="modal">
               <motion.button
@@ -38,7 +38,7 @@ const Unauthorized = () => {
                 Sign In
               </motion.button>
             </SignInButton>
-            
+
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
