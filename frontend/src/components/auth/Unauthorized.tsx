@@ -1,9 +1,19 @@
-import { SignInButton } from '@clerk/clerk-react';
+import { SignInButton, useUser } from '@clerk/clerk-react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Unauthorized = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { isSignedIn } = useUser();
+  const from = location.state?.from || '/';
+
+  useEffect(() => {
+    if (isSignedIn) {
+      navigate(from, { replace: true });
+    }
+  }, [isSignedIn, navigate, from]);
 
   return (
     <div className="min-h-screen bg-[#0A0F1E] flex items-center justify-center p-4">

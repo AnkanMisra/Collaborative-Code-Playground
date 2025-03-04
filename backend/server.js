@@ -9,7 +9,6 @@ const io = new Server(3000, {
   }
 });
 
-// Track unique clients by their ID
 const connectedClients = new Set();
 
 io.on("connection", (socket) => {
@@ -20,19 +19,15 @@ io.on("connection", (socket) => {
 
   socket.on("message", (data) => {
     console.log(`Message received: ${data}`);
-    // Broadcast to everyone including sender
     io.emit("message", data);
   });
 
-  // Handle language change events
   socket.on("language-change", (language) => {
     console.log(`Language changed to: ${language}`);
-    // Broadcast to everyone except sender
     socket.broadcast.emit("language-change", language);
   });
 
   socket.on("disconnect", () => {
-    // Only decrement if this client was tracked
     if (connectedClients.has(socket.id)) {
       connectedClients.delete(socket.id);
       console.log(`Client disconnected. Total clients: ${connectedClients.size}`);
