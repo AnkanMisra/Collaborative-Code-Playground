@@ -127,21 +127,44 @@ The backend server will run on `http://localhost:3000`
 
 ## Project Structure
 ```plaintext
-.
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   └── services/
-│   └── package.json
-└── backend/
-    ├── src/
-    │   ├── controllers/
-    │   ├── models/
-    │   └── services/
-    └── package.json
+├── README.md
+├── backend
+│   ├── package-lock.json
+│   ├── package.json
+│   └── server.js
+└── frontend
+    ├── eslint.config.js
+    ├── index.html
+    ├── package-lock.json
+    ├── package.json
+    ├── src
+    │   ├── App.tsx
+    │   ├── components
+    │   │   ├── NotFound.tsx
+    │   │   ├── chat
+    │   │   │   └── ChatArea.tsx
+    │   │   ├── common
+    │   │   │   ├── Background
+    │   │   │   └── Navbar.tsx
+    │   │   ├── editor
+    │   │   │   ├── CodeEditor.tsx
+    │   │   │   ├── Editor.tsx
+    │   │   │   ├── LanguageSelector.tsx
+    │   │   │   └── MessageInput.tsx
+    │   │   └── landing
+    │   │       └── LandingPage.tsx
+    │   ├── contexts
+    │   │   └── SocketContext.tsx
+    │   ├── index.css
+    │   ├── main.tsx
+    │   ├── services
+    │   │   └── socketService.ts
+    │   └── vite-env.d.ts
+    ├── tsconfig.app.json
+    ├── tsconfig.json
+    ├── tsconfig.node.json
+    └── vite.config.ts
 ```
-
 ## Features
 - Real-time collaborative code editing
 - Multiple programming language support
