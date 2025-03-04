@@ -4,7 +4,7 @@
 
 A real-time collaborative code editing platform where developers can code together with sharing knowledge, and learn from each other. 
 
-This is a personal side project of Team ByteBlaster **[Aditya Ghosh](https://www.linkedin.com/in/adityaghosh2992/) [Ankan Misra](https://www.linkedin.com/in/ankanmisra/) [Suman Jain](https://www.linkedin.com/in/suman-naresh-jain/)** and now is part of **[Apertre 2.0](https://s2apertre.resourcio.in/)**
+This is a personal side project of **[Aditya Ghosh](https://www.linkedin.com/in/adityaghosh2992/) [Ankan Misra](https://www.linkedin.com/in/ankanmisra/) [Suman Jain](https://www.linkedin.com/in/suman-naresh-jain/)** and now is part of **[Apertre 2.0](https://s2apertre.resourcio.in/)**
 
 ## Project Overview
 The Collaborative Code Playground consists of two main components:
