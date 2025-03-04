@@ -1,6 +1,6 @@
 
 
-# Collaborative Code Playground 🖥️
+# Collaborative Code Playground (CodePlay) 🖥️
 
 A real-time collaborative code editing platform where developers can code together with sharing knowledge, and learn from each other. 
 
@@ -30,15 +30,61 @@ The Collaborative Code Playground consists of two main components:
 - npm or yarn
 - MongoDB (local or cloud instance)
 
-## How Can you Help?
+# How Can you Help?
 - **Feature Requests**: Share your ideas through GitHub issues.
 - **Bug Fixes & Improvements**: Pick an existing issue or report one.
 - **UI/UX Enhancements**: Help refine the user interface for a smoother experience.
 - **Docs & Tutorials**: Improve our documentation or create tutorials for new users.
 - **Community Engagement**: Spread the word and help others discover the platform
 
+## Contribution
+- **1**. Fork the Project
+- **2**. Create a new branch ```git branch <branch_name>``` 
+- **3**. Switch to your new branch ```git checkout <branch-name>``` or ```git checkout -b <branch-name>```
+- **4**. Commit your changes ```git commit -m "your approprite message"``` 
+- **5**. Push those changes to your branch ```git push origin <branch-name>```
+- **6**. Open a Pull Request
+  
 ### By contributing, you’ll not only gain experience with real-world collaborative development but also leave a lasting impact on an evolving open-source project
 
+## After Pulling a Pull Request
+
+Once you’ve opened a Pull Request (PR) and it’s merged or reviewed, follow these steps to keep your repository updated and maintain good contribution practices.
+
+### 🚀 After Opening a Pull Request:
+1. **Add a Descriptive Comment:**  
+   - Summarize the changes you made (if not covered in the commit message).  
+   - Mention any linked issues using keywords (e.g., `Closes #123`).  
+
+2. **Respond to Feedback:**  
+   - Check for comments or requested changes from reviewers.  
+   - Make changes locally, commit, and push to the same branch — the PR will update automatically.  
+
+3. **Celebrate if Merged!** 🎉  
+   - Thank the maintainers for reviewing and merging your contribution.
+
+---
+
+### 🛠 After Pulling Changes (if PR is merged):
+1. **Update Your Local Repository:**  
+   - Switch to the main branch:  
+     ```bash
+     git checkout main
+     ```  
+   - Pull the latest changes:  
+     ```bash
+     git pull origin main
+     ```  
+   - Delete your branch (if no longer needed):  
+     ```bash
+     git branch -d <branch_name>
+     ```  
+
+2. **Start a New Task (Optional):**  
+   - Pick another issue or feature to work on.  
+   - Repeat the cycle: create a branch, make your changes, and contribute again!
+
+By following these steps, you ensure your fork stays in sync with the original repository, making future contributions even smoother. 🚀
 ## Running the Project Locally
 
 1. Clone the repository
@@ -81,21 +127,44 @@ The backend server will run on `http://localhost:3000`
 
 ## Project Structure
 ```plaintext
-.
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   └── services/
-│   └── package.json
-└── backend/
-    ├── src/
-    │   ├── controllers/
-    │   ├── models/
-    │   └── services/
-    └── package.json
+├── README.md
+├── backend
+│   ├── package-lock.json
+│   ├── package.json
+│   └── server.js
+└── frontend
+    ├── eslint.config.js
+    ├── index.html
+    ├── package-lock.json
+    ├── package.json
+    ├── src
+    │   ├── App.tsx
+    │   ├── components
+    │   │   ├── NotFound.tsx
+    │   │   ├── chat
+    │   │   │   └── ChatArea.tsx
+    │   │   ├── common
+    │   │   │   ├── Background
+    │   │   │   └── Navbar.tsx
+    │   │   ├── editor
+    │   │   │   ├── CodeEditor.tsx
+    │   │   │   ├── Editor.tsx
+    │   │   │   ├── LanguageSelector.tsx
+    │   │   │   └── MessageInput.tsx
+    │   │   └── landing
+    │   │       └── LandingPage.tsx
+    │   ├── contexts
+    │   │   └── SocketContext.tsx
+    │   ├── index.css
+    │   ├── main.tsx
+    │   ├── services
+    │   │   └── socketService.ts
+    │   └── vite-env.d.ts
+    ├── tsconfig.app.json
+    ├── tsconfig.json
+    ├── tsconfig.node.json
+    └── vite.config.ts
 ```
-
 ## Features
 - Real-time collaborative code editing
 - Multiple programming language support
