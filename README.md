@@ -135,12 +135,15 @@ The backend server will run on `http://localhost:3000`
 └── frontend
     ├── eslint.config.js
     ├── index.html
-    ├── package-lock.json
     ├── package.json
     ├── src
     │   ├── App.tsx
     │   ├── components
     │   │   ├── NotFound.tsx
+    │   │   ├── auth
+    │   │   │   ├── SignIn.tsx
+    │   │   │   ├── SignUp.tsx
+    │   │   │   └── Unauthorized.tsx
     │   │   ├── chat
     │   │   │   └── ChatArea.tsx
     │   │   ├── common
@@ -151,8 +154,10 @@ The backend server will run on `http://localhost:3000`
     │   │   │   ├── Editor.tsx
     │   │   │   ├── LanguageSelector.tsx
     │   │   │   └── MessageInput.tsx
-    │   │   └── landing
-    │   │       └── LandingPage.tsx
+    │   │   ├── landing
+    │   │   │   └── LandingPage.tsx
+    │   │   └── profile
+    │   │       └── Profile.tsx
     │   ├── contexts
     │   │   └── SocketContext.tsx
     │   ├── index.css
@@ -164,6 +169,7 @@ The backend server will run on `http://localhost:3000`
     ├── tsconfig.json
     ├── tsconfig.node.json
     └── vite.config.ts
+
 ```
 ## Features
 - Real-time collaborative code editing
