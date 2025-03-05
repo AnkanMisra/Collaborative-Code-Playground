@@ -1,4 +1,4 @@
-import { SignInButton, useUser } from '@clerk/clerk-react';
+import { useUser } from '@clerk/clerk-react';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -39,16 +39,6 @@ const Unauthorized = () => {
           <p className="text-gray-400 mb-6">You need to sign in to access this page</p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <SignInButton mode="modal">
-              <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(59, 130, 246, 0.5)" }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-[#3B82F6] text-white rounded-md font-medium hover:bg-[#2563EB] transition-colors w-full sm:w-auto"
-              >
-                Sign In
-              </motion.button>
-            </SignInButton>
-
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

@@ -1,15 +1,15 @@
+import { useUser } from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
-import { io, Socket } from "socket.io-client";
-import { Routes, Route, Navigate } from "react-router-dom";
-import { SignedIn, useUser } from "@clerk/clerk-react";
-import LandingPage from "./components/landing/LandingPage";
-import Editor from "./components/editor/Editor";
-import NotFound from './components/NotFound';
-import Profile from './components/profile/Profile';
-import { SocketProvider } from './contexts/SocketContext';
+import { Navigate, Route, Routes } from "react-router-dom";
+import { io } from "socket.io-client";
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
 import Unauthorized from './components/auth/Unauthorized';
+import Editor from "./components/editor/Editor";
+import LandingPage from "./components/landing/LandingPage";
+import NotFound from './components/NotFound';
+import Profile from './components/profile/Profile';
+import { SocketProvider } from './contexts/SocketContext';
 
 const socket = io("http://localhost:3000", {
   transports: ['websocket'],
@@ -45,39 +45,28 @@ function App() {
       <div className="w-full min-h-screen bg-[#0A0F1E]">
         <Routes>
           <Route path="/" element={<LandingPage connected={connected} />} />
+          <Route path="/sign-in" element={
+            isSignedIn ? <Navigate to="/editor" replace /> : <SignIn />
+          } />
+          <Route path="/sign-up" element={
+            isSignedIn ? <Navigate to="/editor" replace /> : <SignUp />
+          } />
+          <Route path="/unauthorized" element={<Unauthorized />} />
           <Route path="/editor" element={
             isSignedIn ? (
-              <SignedIn>
-                <Editor socket={socket} connected={connected} />
-              </SignedIn>
+              <Editor socket={socket} connected={connected} />
             ) : (
-              <Navigate to="/unauthorized" replace />
+              <Navigate to="/unauthorized" state={{ from: '/editor' }} replace />
             )
           } />
           <Route path="/profile" element={
             isSignedIn ? (
-              <SignedIn>
-                <Profile />
-              </SignedIn>
+              <Profile />
             ) : (
-              <Navigate to="/unauthorized" replace />
+              <Navigate to="/unauthorized" state={{ from: '/profile' }} replace />
             )
           } />
-          <Route path="/sign-in" element={
-            isSignedIn ? (
-              <Navigate to="/profile" replace />
-            ) : (
-              <SignIn />
-            )
-          } />
-          <Route path="/sign-up" element={
-            isSignedIn ? (
-              <Navigate to="/profile" replace />
-            ) : (
-              <SignUp />
-            )
-          } />
-          <Route path="/unauthorized" element={<Unauthorized />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
