@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaDiscord } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 
 interface NavbarProps {
   connected: boolean;
@@ -98,28 +99,75 @@ const Navbar = ({ connected, onScrollToSection, featuresRef, faqRef, ctaRef, isL
               </>
             )}
             
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(59, 130, 246, 0.5)" }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleStartCoding}
-              disabled={!connected}
-              className={`px-4 py-2 bg-[#3B82F6] text-white rounded-md font-medium text-sm
-                        ${!connected ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#2563EB] transition-colors'}`}
-            >
-              {connected ? "Start Coding" : "Connecting..."}
-            </motion.button>
+            <SignedOut>
+              <SignInButton mode="modal">
+                <motion.button
+                  whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(59, 130, 246, 0.5)" }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-4 py-2 bg-[#3B82F6] text-white rounded-md font-medium text-sm hover:bg-[#2563EB] transition-colors"
+                >
+                  Sign In
+                </motion.button>
+              </SignInButton>
+            </SignedOut>
+            
+            <SignedIn>
+              <div className="flex items-center gap-4">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => navigate('/profile')}
+                  className="px-4 py-2 bg-[#1E293B]/50 text-white rounded-md text-sm hover:bg-[#1E293B]/80 transition-colors border border-[#3B82F6]/20"
+                >
+                  Profile
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(59, 130, 246, 0.5)" }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={handleStartCoding}
+                  disabled={!connected}
+                  className={`px-4 py-2 bg-[#3B82F6] text-white rounded-md font-medium text-sm
+                            ${!connected ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#2563EB] transition-colors'}`}
+                >
+                  {connected ? "Start Coding" : "Connecting..."}
+                </motion.button>
+                <UserButton 
+                  afterSignOutUrl="/"
+                  appearance={{
+                    elements: {
+                      rootBox: "border-2 border-[#3B82F6]/20 hover:border-[#3B82F6]/40 transition-colors",
+                      avatarBox: "w-8 h-8 sm:w-10 sm:h-10"
+                    }
+                  }}
+                />
+              </div>
+            </SignedIn>
           </div>
+          
           <div className="md:hidden">
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(59, 130, 246, 0.5)" }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleStartCoding}
-              disabled={!connected}
-              className={`px-4 py-2 bg-[#3B82F6] text-white rounded-md font-medium text-sm
-                        ${!connected ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#2563EB] transition-colors'}`}
-            >
-              {connected ? "Start" : "..."}
-            </motion.button>
+            <SignedOut>
+              <SignInButton mode="modal">
+                <motion.button
+                  whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(59, 130, 246, 0.5)" }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-4 py-2 bg-[#3B82F6] text-white rounded-md font-medium text-sm hover:bg-[#2563EB] transition-colors"
+                >
+                  Sign In
+                </motion.button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <motion.button
+                whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(59, 130, 246, 0.5)" }}
+                whileTap={{ scale: 0.95 }}
+                onClick={handleStartCoding}
+                disabled={!connected}
+                className={`px-4 py-2 bg-[#3B82F6] text-white rounded-md font-medium text-sm
+                          ${!connected ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#2563EB] transition-colors'}`}
+              >
+                {connected ? "Start" : "..."}
+              </motion.button>
+            </SignedIn>
           </div>
         </div>
       </div>
