@@ -5,14 +5,13 @@ import { ClerkProvider } from '@clerk/clerk-react'
 import './index.css'
 import App from './App'
 
-// Import your Publishable Key
+
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
 if (!PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key")
 }
 
-// Add these styles to your index.css or create a style tag
 const style = document.createElement('style');
 style.textContent = `
   body, #root {

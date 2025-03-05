@@ -1,13 +1,11 @@
+import { SignUp as ClerkSignUp, useUser } from '@clerk/clerk-react';
+import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useUser, SignUp as ClerkSignUp } from '@clerk/clerk-react';
-import { motion } from 'framer-motion';
 
 const SignUp = () => {
   const { isSignedIn } = useUser();
   const navigate = useNavigate();
-
-  // Redirect to editor if already signed in
   useEffect(() => {
     if (isSignedIn) {
       navigate('/editor');
@@ -25,7 +23,7 @@ const SignUp = () => {
         <div className="text-center mb-8">
           <motion.div
             className="inline-block bg-gradient-to-br from-[#3B82F6] to-[#60A5FA] p-3 rounded-md mb-4"
-            whileHover={{ 
+            whileHover={{
               rotate: [0, -10, 10, -10, 0],
               transition: { duration: 0.5 }
             }}
@@ -37,11 +35,11 @@ const SignUp = () => {
           <h1 className="text-3xl font-bold text-white mb-2">Join CodePlay</h1>
           <p className="text-gray-400">Create an account to start collaborating</p>
         </div>
-        
+
         <div className="bg-[#1E293B]/30 backdrop-blur-sm rounded-lg p-6 border border-[#3B82F6]/20">
           <ClerkSignUp signInUrl="/sign-in" redirectUrl="/editor" />
         </div>
-        
+
         <div className="mt-6 text-center">
           <motion.button
             onClick={() => navigate('/')}

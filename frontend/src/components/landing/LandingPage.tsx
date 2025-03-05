@@ -1,19 +1,19 @@
+import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { FaCode, FaDiscord, FaGithub, FaRocket, FaUsers } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Particles from '../common/Background/Particles';
-import { FaCode, FaUsers, FaRocket, FaGithub, FaDiscord } from 'react-icons/fa';
-import { motion, useScroll, useTransform} from 'framer-motion';
-import { useRef, useEffect } from 'react';
 import Navbar from '../common/Navbar';
-import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
-    transition: { 
-      duration: 0.8, 
-      ease: [0.22, 1, 0.36, 1] 
+    transition: {
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1]
     }
   }
 };
@@ -31,7 +31,7 @@ const staggerContainer = {
 
 const shimmer = {
   hidden: { backgroundPosition: '200% 0' },
-  visible: { 
+  visible: {
     backgroundPosition: '-200% 0',
     transition: {
       repeat: Infinity,
@@ -81,7 +81,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
 
   return (
     <div className="relative w-full overflow-x-hidden bg-[#0A0F1E] font-['Roboto_Condensed']">
-      <motion.div 
+      <motion.div
         className="fixed inset-0 w-full h-full"
         style={{ y: backgroundParallax }}
       >
@@ -97,8 +97,8 @@ const LandingPage = ({ connected }: LandingPageProps) => {
         />
       </motion.div>
 
-      <Navbar 
-        connected={connected} 
+      <Navbar
+        connected={connected}
         onScrollToSection={(ref: React.RefObject<HTMLDivElement>) => scrollToSection(ref)}
         featuresRef={featuresRef as React.RefObject<HTMLDivElement>}
         faqRef={faqRef as React.RefObject<HTMLDivElement>}
@@ -119,8 +119,8 @@ const LandingPage = ({ connected }: LandingPageProps) => {
               initial={{ opacity: 0, y: 20, scale: 0.8 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              whileHover={{ 
-                scale: 1.05, 
+              whileHover={{
+                scale: 1.05,
                 boxShadow: "0 0 20px rgba(59, 130, 246, 0.4)",
                 transition: { duration: 0.2 }
               }}
@@ -150,8 +150,8 @@ const LandingPage = ({ connected }: LandingPageProps) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              whileHover={{ 
-                scale: 1.02, 
+              whileHover={{
+                scale: 1.02,
                 boxShadow: "0 0 25px rgba(59, 130, 246, 0.2)",
                 transition: { duration: 0.2 }
               }}
@@ -170,11 +170,10 @@ const LandingPage = ({ connected }: LandingPageProps) => {
             initial="hidden"
             animate="visible"
           >
-            {/* GitHub and Discord buttons remain the same */}
             <motion.button
               variants={fadeInUp}
-              whileHover={{ 
-                scale: 1.05, 
+              whileHover={{
+                scale: 1.05,
                 boxShadow: "0 0 25px rgba(59, 130, 246, 0.3)",
                 backgroundColor: "rgba(30, 41, 59, 0.8)"
               }}
@@ -186,8 +185,8 @@ const LandingPage = ({ connected }: LandingPageProps) => {
             </motion.button>
             <motion.button
               variants={fadeInUp}
-              whileHover={{ 
-                scale: 1.05, 
+              whileHover={{
+                scale: 1.05,
                 boxShadow: "0 0 25px rgba(59, 130, 246, 0.3)",
                 backgroundColor: "rgba(30, 41, 59, 0.8)"
               }}
@@ -197,12 +196,8 @@ const LandingPage = ({ connected }: LandingPageProps) => {
             >
               <FaDiscord className="text-xl" /> Discord
             </motion.button>
-            
-            {/* Profile button for signed-in users has been removed */}
           </motion.div>
-          
-          {/* Add connection status indicator */}
-          <motion.div 
+          <motion.div
             className="flex justify-center mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -244,16 +239,16 @@ const LandingPage = ({ connected }: LandingPageProps) => {
 
             <motion.div
               variants={fadeInUp}
-              whileHover={{ 
-                y: -15, 
+              whileHover={{
+                y: -15,
                 boxShadow: "0 20px 40px -5px rgba(59, 130, 246, 0.4)",
                 backgroundColor: "rgba(30, 41, 59, 0.5)"
               }}
               className="bg-[#1E293B]/30 rounded-lg p-6 backdrop-blur-sm border border-[#3B82F6]/20 flex flex-col items-center text-center transition-all duration-300"
             >
-              <motion.div 
+              <motion.div
                 className="bg-gradient-to-br from-[#38BDF8] to-[#60A5FA] p-4 rounded-full mb-4"
-                whileHover={{ 
+                whileHover={{
                   rotate: 360,
                   scale: 1.1,
                   transition: { duration: 0.8, ease: "easeInOut" }
@@ -268,16 +263,16 @@ const LandingPage = ({ connected }: LandingPageProps) => {
 
             <motion.div
               variants={fadeInUp}
-              whileHover={{ 
-                y: -15, 
+              whileHover={{
+                y: -15,
                 boxShadow: "0 20px 40px -5px rgba(59, 130, 246, 0.4)",
                 backgroundColor: "rgba(30, 41, 59, 0.5)"
               }}
               className="bg-[#1E293B]/30 rounded-lg p-6 backdrop-blur-sm border border-[#3B82F6]/20 flex flex-col items-center text-center transition-all duration-300"
             >
-              <motion.div 
+              <motion.div
                 className="bg-gradient-to-br from-[#3B82F6] to-[#2563EB] p-4 rounded-full mb-4"
-                whileHover={{ 
+                whileHover={{
                   rotate: 360,
                   scale: 1.1,
                   transition: { duration: 0.8, ease: "easeInOut" }
@@ -292,16 +287,16 @@ const LandingPage = ({ connected }: LandingPageProps) => {
 
             <motion.div
               variants={fadeInUp}
-              whileHover={{ 
-                y: -15, 
+              whileHover={{
+                y: -15,
                 boxShadow: "0 20px 40px -5px rgba(59, 130, 246, 0.4)",
                 backgroundColor: "rgba(30, 41, 59, 0.5)"
               }}
               className="bg-[#1E293B]/30 rounded-lg p-6 backdrop-blur-sm border border-[#3B82F6]/20 flex flex-col items-center text-center transition-all duration-300"
             >
-              <motion.div 
+              <motion.div
                 className="bg-gradient-to-br from-[#60A5FA] to-[#93C5FD] p-4 rounded-full mb-4"
-                whileHover={{ 
+                whileHover={{
                   rotate: 360,
                   scale: 1.1,
                   transition: { duration: 0.8, ease: "easeInOut" }
@@ -319,7 +314,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
 
       <section ref={faqRef} id="faq" className="py-24 relative z-10 bg-[#0F172A]/50">
         <div className="container mx-auto px-6">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             variants={fadeInUp}
             initial="hidden"
@@ -331,7 +326,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
               Everything you need to know about our platform
             </p>
           </motion.div>
-          
+
           <div className="max-w-3xl mx-auto">
             {[
               {
@@ -355,15 +350,15 @@ const LandingPage = ({ connected }: LandingPageProps) => {
                 answer: "Yes! Many instructors use our platform for teaching programming concepts. The real-time nature makes it perfect for demonstrating code and helping students with immediate feedback."
               }
             ].map((faq, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 className="mb-6 bg-[#1E293B]/30 rounded-lg p-6 backdrop-blur-sm border border-[#3B82F6]/20"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.4, delay: 0.1 * index }}
-                whileHover={{ 
-                  scale: 1.02, 
+                whileHover={{
+                  scale: 1.02,
                   boxShadow: "0 10px 30px -5px rgba(59, 130, 246, 0.3)",
                   backgroundColor: "rgba(30, 41, 59, 0.5)"
                 }}
@@ -379,19 +374,19 @@ const LandingPage = ({ connected }: LandingPageProps) => {
 
       <section ref={ctaRef} id="cta" className="py-24 relative z-10">
         <div className="container mx-auto px-6">
-          <motion.div 
+          <motion.div
             className="max-w-4xl mx-auto bg-gradient-to-r from-[#1E293B] to-[#0F172A] p-12 rounded-2xl border border-[#3B82F6]/20 text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            whileHover={{ 
+            whileHover={{
               boxShadow: "0 20px 50px -10px rgba(59, 130, 246, 0.4)",
               scale: 1.01,
               transition: { duration: 0.3 }
             }}
           >
-            <motion.h2 
+            <motion.h2
               className="text-3xl md:text-4xl font-bold mb-6 text-white"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -400,7 +395,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
             >
               Ready to Start Coding Together?
             </motion.h2>
-            <motion.p 
+            <motion.p
               className="text-xl text-white/70 mb-8 max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -416,8 +411,8 @@ const LandingPage = ({ connected }: LandingPageProps) => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.4 }}
-                  whileHover={{ 
-                    scale: 1.05, 
+                  whileHover={{
+                    scale: 1.05,
                     boxShadow: "0 0 30px rgba(59, 130, 246, 0.6)",
                     transition: { duration: 0.2 }
                   }}
@@ -429,14 +424,13 @@ const LandingPage = ({ connected }: LandingPageProps) => {
               </SignInButton>
             </SignedOut>
             <SignedIn>
-              {/* Removed the flex container with two buttons and kept only the Start Coding button */}
               <motion.button
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                whileHover={{ 
-                  scale: 1.05, 
+                whileHover={{
+                  scale: 1.05,
                   boxShadow: "0 0 30px rgba(59, 130, 246, 0.6)",
                   transition: { duration: 0.2 }
                 }}
@@ -456,22 +450,22 @@ const LandingPage = ({ connected }: LandingPageProps) => {
 
       <footer className="py-12 relative z-10 border-t border-[#3B82F6]/10">
         <div className="container mx-auto px-6">
-          <motion.div 
+          <motion.div
             className="flex flex-col md:flex-row justify-between items-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <motion.div 
+            <motion.div
               className="flex items-center gap-3 mb-6 md:mb-0 cursor-pointer"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <motion.div 
+              <motion.div
                 className="bg-gradient-to-br from-[#3B82F6] to-[#60A5FA] p-2 rounded-md"
-                whileHover={{ 
+                whileHover={{
                   rotate: [0, -10, 10, -10, 0],
                   transition: { duration: 0.5 }
                 }}
@@ -482,7 +476,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
             </motion.div>
 
             <div className="flex flex-wrap justify-center gap-8 mb-6 md:mb-0">
-              <motion.button 
+              <motion.button
                 onClick={() => scrollToSection(featuresRef as React.RefObject<HTMLDivElement>)}
                 className="text-white/60 hover:text-white transition-colors"
                 whileHover={{ scale: 1.1, color: "#ffffff" }}
@@ -490,7 +484,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
               >
                 Features
               </motion.button>
-              <motion.button 
+              <motion.button
                 onClick={() => scrollToSection(faqRef as React.RefObject<HTMLDivElement>)}
                 className="text-white/60 hover:text-white transition-colors"
                 whileHover={{ scale: 1.1, color: "#ffffff" }}
@@ -498,8 +492,8 @@ const LandingPage = ({ connected }: LandingPageProps) => {
               >
                 FAQ
               </motion.button>
-              <motion.button 
-                onClick={() => scrollToSection(ctaRef as React.RefObject<HTMLDivElement>)} 
+              <motion.button
+                onClick={() => scrollToSection(ctaRef as React.RefObject<HTMLDivElement>)}
                 className="text-white/60 hover:text-white transition-colors"
                 whileHover={{ scale: 1.1, color: "#ffffff" }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -508,12 +502,12 @@ const LandingPage = ({ connected }: LandingPageProps) => {
               </motion.button>
             </div>
             <div className="flex gap-4">
-              <motion.a 
-                href="https://github.com/AnkanMisra/Collaborative-Code-Playground" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <motion.a
+                href="https://github.com/AnkanMisra/Collaborative-Code-Playground"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white/60 hover:text-white transition-colors"
-                whileHover={{ 
+                whileHover={{
                   scale: 1.2,
                   color: "#ffffff",
                   rotate: [0, -5, 5, -5, 0],
@@ -522,12 +516,12 @@ const LandingPage = ({ connected }: LandingPageProps) => {
               >
                 <FaGithub className="text-xl" />
               </motion.a>
-              <motion.a 
-                href="https://discordapp.com/users/purpose2004" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <motion.a
+                href="https://discordapp.com/users/purpose2004"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white/60 hover:text-white transition-colors"
-                whileHover={{ 
+                whileHover={{
                   scale: 1.2,
                   color: "#ffffff",
                   rotate: [0, -5, 5, -5, 0],
@@ -539,7 +533,7 @@ const LandingPage = ({ connected }: LandingPageProps) => {
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="text-center mt-12"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -557,4 +551,3 @@ const LandingPage = ({ connected }: LandingPageProps) => {
 };
 
 export default LandingPage;
-         
