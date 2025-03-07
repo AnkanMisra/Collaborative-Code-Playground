@@ -13,7 +13,7 @@ The Collaborative Code Playground consists of two main components:
 
 ## Tech Stack
 ### Frontend
-- React.js
+- React
 - Tailwind CSS
 - Code Mirror (for code editor)
 - Socket.io-client (for real-time collaboration)
