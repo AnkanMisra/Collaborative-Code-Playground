@@ -1,3 +1,7 @@
+# Hey, Welcome to Apertre 2.0! 👋
+
+It is an open source event, make sure to follow the issue tags before commiting and also make sure to join the discord server.
+https://discord.gg/A9QpVUazNC 
 
 
 # Collaborative Code Playground (CodePlay) 🖥️
