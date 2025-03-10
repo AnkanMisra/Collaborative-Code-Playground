@@ -1,5 +1,10 @@
 import { Server } from 'socket.io';
 
+import express from 'express'//Recquiring express
+import mongoose  from 'mongoose';
+
+import app from './app.js' // importing the app from app.js
+
 const io = new Server(3000, {
   cors: {
     origin: "http://localhost:5173",
@@ -36,3 +41,18 @@ io.on("connection", (socket) => {
 });
 
 console.log("Server running on port 3000");
+
+//Connecting with the database
+const db=process.env.DATABASE
+mongoose.connect(db,{
+  useNewUrlParser:true
+  
+   
+})
+.then(con=>console.log('Database connected'))
+.catch(err=>console.log(err))
+
+//Server listend to PORT
+app.listen(process.env.PORT,()=>{
+  console.log('Listening to port 8000')
+})
