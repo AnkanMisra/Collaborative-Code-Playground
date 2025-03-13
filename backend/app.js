@@ -15,5 +15,5 @@ app.use(express.json()) //It is used to read the json file that we get from the 
 
 app.use('/api/v1/user',router)
 
-
+ 
 export default app
