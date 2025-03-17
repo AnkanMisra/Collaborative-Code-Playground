@@ -6,7 +6,7 @@ import { FiCheckCircle, FiXCircle, FiChevronLeft as ChevronLeft, FiChevronRight 
 import { useNavigate } from 'react-router-dom';
 import Particles from '../common/Background/Particles';
 import Navbar from '../common/Navbar';
-import {Badge} from '../../components/ui/badge'; 
+// import {Badge} from '../../components/ui/badge'; 
 import { Button } from '../../components/ui/button'; 
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../../components/ui/tabs'; 
 import { Avatar, AvatarImage, AvatarFallback } from '../../components/ui/avatar';
