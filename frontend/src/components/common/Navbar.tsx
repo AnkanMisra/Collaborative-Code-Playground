@@ -9,10 +9,21 @@ interface NavbarProps {
   featuresRef: React.RefObject<HTMLDivElement>;
   faqRef: React.RefObject<HTMLDivElement>;
   ctaRef: React.RefObject<HTMLDivElement>;
+  howItWorksRef: React.RefObject<HTMLDivElement>;
+  pricingRef: React.RefObject<HTMLDivElement>;
   isLandingPage: boolean;
 }
 
-const Navbar = ({ connected, onScrollToSection, featuresRef, faqRef, ctaRef, isLandingPage }: NavbarProps) => {
+const Navbar = ({ 
+  connected, 
+  onScrollToSection, 
+  featuresRef, 
+  faqRef, 
+  ctaRef, 
+  howItWorksRef,
+  pricingRef,
+  isLandingPage 
+}: NavbarProps) => {
   const navigate = useNavigate();
 
   const handleStartCoding = () => {
@@ -46,8 +57,9 @@ const Navbar = ({ connected, onScrollToSection, featuresRef, faqRef, ctaRef, isL
             </motion.div>
             <span className="text-white text-xl font-bold">CodePlay</span>
           </motion.div>
+
           <div className="hidden md:flex items-center gap-8">
-            {isLandingPage && onScrollToSection && (
+            {isLandingPage && (
               <>
                 <motion.button 
                   onClick={() => featuresRef && onScrollToSection(featuresRef)} 
@@ -56,6 +68,22 @@ const Navbar = ({ connected, onScrollToSection, featuresRef, faqRef, ctaRef, isL
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
                   Features
+                </motion.button>
+                <motion.button
+                  onClick={() => howItWorksRef && onScrollToSection(howItWorksRef)}
+                  className="text-white/80 hover:text-white transition-colors"
+                  whileHover={{ scale: 1.1, color: "#ffffff" }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  How It Works
+                </motion.button>
+                <motion.button
+                  onClick={() => pricingRef && onScrollToSection(pricingRef)}
+                  className="text-white/80 hover:text-white transition-colors"
+                  whileHover={{ scale: 1.1, color: "#ffffff" }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  Pricing
                 </motion.button>
                 <motion.button 
                   onClick={() => faqRef && onScrollToSection(faqRef)} 
@@ -75,7 +103,9 @@ const Navbar = ({ connected, onScrollToSection, featuresRef, faqRef, ctaRef, isL
                 </motion.button>
               </>
             )}
-            
+          </div>
+
+          <div className="flex items-center gap-4">
             {!isLandingPage && (
               <>
                 <motion.a 
@@ -141,32 +171,6 @@ const Navbar = ({ connected, onScrollToSection, featuresRef, faqRef, ctaRef, isL
                   }}
                 />
               </div>
-            </SignedIn>
-          </div>
-          
-          <div className="md:hidden">
-            <SignedOut>
-              <SignInButton mode="modal">
-                <motion.button
-                  whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(59, 130, 246, 0.5)" }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-4 py-2 bg-[#3B82F6] text-white rounded-md font-medium text-sm hover:bg-[#2563EB] transition-colors"
-                >
-                  Sign In
-                </motion.button>
-              </SignInButton>
-            </SignedOut>
-            <SignedIn>
-              <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(59, 130, 246, 0.5)" }}
-                whileTap={{ scale: 0.95 }}
-                onClick={handleStartCoding}
-                disabled={!connected}
-                className={`px-4 py-2 bg-[#3B82F6] text-white rounded-md font-medium text-sm
-                          ${!connected ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#2563EB] transition-colors'}`}
-              >
-                {connected ? "Start" : "..."}
-              </motion.button>
             </SignedIn>
           </div>
         </div>
