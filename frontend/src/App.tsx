@@ -11,6 +11,7 @@ import NotFound from './components/NotFound';
 import Profile from './components/profile/Profile';
 import { SocketProvider } from './contexts/SocketContext';
 
+
 const socket = io("http://localhost:3000", {
   transports: ['websocket'],
   reconnection: true
@@ -66,6 +67,7 @@ function App() {
               <Navigate to="/unauthorized" state={{ from: '/profile' }} replace />
             )
           } />
+          <Route path="/signup" element={<Unauthorized />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
