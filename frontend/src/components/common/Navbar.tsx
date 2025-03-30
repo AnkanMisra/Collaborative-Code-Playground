@@ -7,7 +7,6 @@ import {
   SignInButton,
   UserButton,
 } from "@clerk/clerk-react";
-import { Link } from "react-router-dom";
 
 interface NavbarProps {
   connected: boolean;
