@@ -10,7 +10,7 @@ import LandingPage from "./components/landing/LandingPage";
 import NotFound from './components/NotFound';
 import Profile from './components/profile/Profile';
 import { SocketProvider } from './contexts/SocketContext';
-
+import VerifyEmail from './components/auth/VerifyEmail';
 
 const socket = io("http://localhost:3000", {
   transports: ['websocket'],
@@ -70,6 +70,7 @@ function App() {
           <Route path="/signup" element={<Unauthorized />} />
 
           <Route path="*" element={<NotFound />} />
+          <Route path="/verify-email" element={<VerifyEmail />} />
         </Routes>
       </div>
     </SocketProvider>
